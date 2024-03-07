@@ -3,7 +3,7 @@
         <mat-icon>menu</mat-icon>
     </button>
     <!-- <span>Suíno Software</span> -->
-    <img src="assets/img/marca.png" width="15%">
+    <img src="assets/img/marca.png" width="12%">
     <span class="example-spacer"></span>
     <button routerLink="" mat-button>Home</button>
     <button [matMenuTriggerFor]="opcUsuario" mat-button>Usuário</button>
@@ -31,9 +31,8 @@
     </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
-        <div style="text-align: center;min-height: 600px;">
-
+        <div class="m-4 conteudo">
             <router-outlet></router-outlet>
-            </div>
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>
