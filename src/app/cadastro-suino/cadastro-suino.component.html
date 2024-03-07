@@ -1,0 +1,54 @@
+<div class="example-container">
+    <form [formGroup]="suinoForm" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field>
+                <mat-label>Brinco do Animal</mat-label>
+                <input matInput placeholder="Ex:0000000" type="text" id="brincoAnimal" formControlName="brincoAnimal" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Brinco do Pai</mat-label>
+                <input matInput placeholder="Ex:0000000" type="text" id="brincoPai" formControlName="brincoPai" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Brinco do Mãe</mat-label>
+                <input matInput placeholder="Ex:0000000" type="text" id="brincoMae" formControlName="brincoMae" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Data de Nascimento</mat-label>
+                <input matInput type="date" id="dataNascimento" formControlName="dataNascimento" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Data de Saída</mat-label>
+                <input matInput type="date" id="dataSaida" formControlName="dataSaida" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Status</mat-label>
+                <mat-select placeholder="selecionar" id="status" formControlName="status" required>
+                <mat-option value="ativo">Ativo</mat-option>
+                <mat-option value="vendido">Vendido</mat-option>
+                <mat-option value="morto">Morto</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Sexo</mat-label>
+                <mat-select placeholder="selecionar" id="sexo" formControlName="sexo" required>
+                <mat-option value="M">Macho</mat-option>
+                <mat-option value="F">Fêmea</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Salvar</button>
+    </form>
+</div>

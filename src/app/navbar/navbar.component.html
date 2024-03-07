@@ -1,0 +1,38 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <button (click)="drawer.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Suíno Software</span>
+    <span class="example-spacer"></span>
+    <button routerLink="" mat-button>Home</button>
+    <button [matMenuTriggerFor]="opcUsuario" mat-button>Usuário</button>
+    <mat-menu #opcUsuario="matMenu">
+        <button routerLink="" mat-menu-item>Sair</button>
+    </mat-menu>
+</mat-toolbar>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer opened="true" mode="side" position="start">
+    <mat-nav-list>
+        <mat-list-item>
+            <button routerLink="" mat-button><mat-icon>dashboard</mat-icon> Dashboard</button>
+        </mat-list-item>
+        <mat-expansion-panel [class.mat-elevation-z0]="true">
+            <mat-expansion-panel-header>
+                <mat-icon inline="true">savings</mat-icon>&nbsp; Suínos
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <button routerLink="cadastrarSuino" mat-button><mat-icon>add</mat-icon> Incluir</button>
+            </mat-nav-list>
+        </mat-expansion-panel>
+        <!-- <mat-list-item>
+            <button routerLink="#" mat-button><mat-icon>savings</mat-icon> Teste</button>
+        </mat-list-item> -->
+    </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="text-align: center;min-height: 600px;">
+
+            <router-outlet></router-outlet>
+            </div>
+    </mat-drawer-content>
+</mat-drawer-container>
