@@ -1,0 +1,15 @@
+<form [formGroup]="pesoForm" (ngSubmit)="submitPeso()">
+    <label for="brincoAnimal">Brinco do Animal:</label>
+    <select formControlName="brincoAnimal">
+      <option *ngFor="let animal of animais" [value]="animal.brinco">{{ animal.brinco }}</option>
+    </select>
+    
+    <label for="dataPesagem">Data da Pesagem:</label>
+    <input type="date" formControlName="dataPesagem">
+    
+    <label for="peso">Peso (Kg):</label>
+    <input type="number" formControlName="peso">
+    
+    <button type="submit" [disabled]="pesoForm.invalid">Cadastrar</button>
+  </form>
+  
