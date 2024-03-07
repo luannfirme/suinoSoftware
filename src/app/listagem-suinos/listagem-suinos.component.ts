@@ -10,12 +10,14 @@ import { Pig } from '../models/pig.model';
 export class ListagemSuinosComponent implements OnInit {
 
   listaSuinos: Pig[] = [];
+  displayedColumns: string[] = ['brincoAnimal', 'brincoPai', 'brincoMae', 'dataNascimento', 'dataSaida', 'status', 'sexo'];
 
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit(): void {
     this.dbService.getPigs().subscribe(pigsList => {
       this.listaSuinos = pigsList;
+      console.log(this.listaSuinos);
     })
   }
 
