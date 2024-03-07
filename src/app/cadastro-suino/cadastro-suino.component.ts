@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatabaseService } from '../services/database/database.service';
 
 @Component({
   selector: 'app-cadastro-suino',
@@ -10,7 +11,7 @@ export class CadastroSuinoComponent implements OnInit {
 
   suinoForm: FormGroup;
 
-  constructor() { 
+  constructor(private dbService: DatabaseService) { 
       this.suinoForm = new FormGroup({
         'brincoAnimal': new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]+$/)]),
         'brincoPai': new FormControl(null,  [Validators.required, Validators.pattern(/^[0-9]+$/)]),
@@ -24,6 +25,7 @@ export class CadastroSuinoComponent implements OnInit {
   
   onSubmit(){
     console.log(this.suinoForm.value);
+    this.dbService.postPig(this.suinoForm.value);
   }
 
   ngOnInit(){
