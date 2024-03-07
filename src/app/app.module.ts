@@ -12,6 +12,7 @@ import { CadastroSuinoComponent } from './cadastro-suino/cadastro-suino.componen
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     CadastroSuinoComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    CadastroPesoComponent,
   ],
   imports: [
     BrowserModule,

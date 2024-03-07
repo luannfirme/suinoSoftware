@@ -24,7 +24,6 @@ export class CadastroSuinoComponent implements OnInit {
   }
   
   onSubmit(){
-    console.log(this.suinoForm.value);
     this.dbService.postPig(this.suinoForm.value);
   }
 
