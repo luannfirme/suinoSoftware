@@ -13,6 +13,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.component';
+import { ControlePesoComponent } from './controle-peso/controle-peso.component';
+import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.compo
     CadastroSuinoComponent,
     NavbarComponent,
     HomeComponent,
-    ListagemSuinosComponent
+    ListagemSuinosComponent,
+    ControlePesoComponent,
+    CadastroPesoComponent
   ],
   imports: [
     BrowserModule,
