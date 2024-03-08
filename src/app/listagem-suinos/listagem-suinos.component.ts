@@ -10,7 +10,7 @@ import { Pig } from '../models/pig.model';
 export class ListagemSuinosComponent implements OnInit {
 
   listaSuinos: Pig[] = [];
-  displayedColumns: string[] = ['brincoAnimal', 'brincoPai', 'brincoMae', 'dataNascimento', 'dataSaida', 'status', 'sexo'];
+  displayedColumns: string[] = ['brincoAnimal', 'brincoPai', 'brincoMae', 'dataNascimento', 'dataSaida', 'status', 'sexo', 'acoes'];
 
   constructor(private dbService: DatabaseService) { }
 
