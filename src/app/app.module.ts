@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.component';
 import { ControlePesoComponent } from './controle-peso/controle-peso.component';
 import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
+import { EditarSuinoComponent } from './editar-suino/editar-suino.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
     HomeComponent,
     ListagemSuinosComponent,
     ControlePesoComponent,
-    CadastroPesoComponent
+    CadastroPesoComponent,
+    EditarSuinoComponent
   ],
   imports: [
     BrowserModule,

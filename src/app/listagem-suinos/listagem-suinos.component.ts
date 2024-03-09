@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database/database.service';
 import { Pig } from '../models/pig.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listagem-suinos',
@@ -10,9 +11,9 @@ import { Pig } from '../models/pig.model';
 export class ListagemSuinosComponent implements OnInit {
 
   listaSuinos: Pig[] = [];
-  displayedColumns: string[] = ['brincoAnimal', 'brincoPai', 'brincoMae', 'dataNascimento', 'dataSaida', 'status', 'sexo'];
+  displayedColumns: string[] = ['brincoAnimal', 'brincoPai', 'brincoMae', 'dataNascimento', 'dataSaida', 'status', 'sexo', 'acoes'];
 
-  constructor(private dbService: DatabaseService) { }
+  constructor(private dbService: DatabaseService, private router: Router) { }
 
   ngOnInit(): void {
     this.dbService.getPigs().subscribe(pigsList => {
@@ -21,4 +22,9 @@ export class ListagemSuinosComponent implements OnInit {
     })
   }
 
+  excluirSuino(id: string) {
+    this.dbService.deletePig(id).subscribe(response => {
+      this.router.navigate(['']);
+    })
+  }
 }
