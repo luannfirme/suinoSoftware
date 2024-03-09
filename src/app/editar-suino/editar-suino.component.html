@@ -1,0 +1,71 @@
+<form [formGroup]="suinoForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Editar Suíno</mat-card-title>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <mat-form-field class="w-100">
+                        <mat-label>Brinco do Animal</mat-label>
+                        <input matInput placeholder="Ex:0000000" type="text" id="brincoAnimal"
+                            formControlName="brincoAnimal" required>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-4">
+                    <mat-form-field class="w-100">
+                        <mat-label>Brinco do Pai</mat-label>
+                        <input matInput placeholder="Ex:0000000" type="text" id="brincoPai" formControlName="brincoPai"
+                            required>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-4">
+                    <mat-form-field class="w-100">
+                        <mat-label>Brinco do Mãe</mat-label>
+                        <input matInput placeholder="Ex:0000000" type="text" id="brincoMae" formControlName="brincoMae"
+                            required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Data de Nascimento</mat-label>
+                        <input matInput type="date" id="dataNascimento" formControlName="dataNascimento" required>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Data de Saída</mat-label>
+                        <input matInput type="date" id="dataSaida" formControlName="dataSaida" required>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Status</mat-label>
+                        <mat-select placeholder="selecionar" id="status" formControlName="status" required>
+                            <mat-option value="ativo">Ativo</mat-option>
+                            <mat-option value="vendido">Vendido</mat-option>
+                            <mat-option value="morto">Morto</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Sexo</mat-label>
+                        <mat-select placeholder="selecionar" id="sexo" formControlName="sexo" required>
+                            <mat-option value="M">Macho</mat-option>
+                            <mat-option value="F">Fêmea</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <br>
+        <mat-card-actions>
+            <button mat-button type="submit">SALVAR</button>
+            <button mat-button routerLink="">VOLTAR</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
