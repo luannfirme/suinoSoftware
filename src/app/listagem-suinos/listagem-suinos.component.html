@@ -33,7 +33,7 @@
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let pig">
             <button mat-icon-button color="primary" routerLink="/editarSuino/{{pig.id}}"><mat-icon>edit</mat-icon></button>
-            <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="excluirSuino(pig.id)"><mat-icon>delete</mat-icon></button>
         </td>
     </ng-container>
 
