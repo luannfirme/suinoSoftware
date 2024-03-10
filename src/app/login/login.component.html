@@ -1,1 +1,42 @@
-<p>login works!</p>
+<mat-card-content class="container">
+  <mat-card class="card-login">
+    <img src="assets/img/marca.png" width="100%">
+    <mat-card-title>{{
+      isLogin ? 'Login' :
+      'Registrar' }}</mat-card-title>
+    <div *ngIf="isLoading">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form [formGroup]="loginForm" novalidate *ngIf="!isLoading">
+      <mat-card-content class="conteudo-login">
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. example@example.com">
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">
+            Por favor informe um email válido
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Senha é
+            <strong>obrigatória</strong> e deve ter no mínimo 6 caracteres
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </form>
+    <mat-card-actions align="end" class="button-container">
+      <button mat-raised-button color="basic" class="full" align="end"
+        (click)="isLogin ? redirectToRegister() : redirectToLogin()">
+        {{ registerButtonText }}
+      </button>
+      <button mat-raised-button color="primary" class="full" align="end" (click)="isLogin ? login() : register()"
+        [class.align-right]="!isLogin" [disabled]="!loginForm.valid">{{
+        isLogin ? 'Entrar' :
+        'Registrar' }}</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-card-content>
