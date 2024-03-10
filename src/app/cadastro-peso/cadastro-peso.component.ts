@@ -1,6 +1,9 @@
 import { PesoService } from './../peso.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Pig } from '../models/pig.model';
+import { DatabaseService } from '../services/database/database.service';
+import { Router } from '@angular/router';
  // Importe o serviço de animais
 
 @Component({
@@ -9,30 +12,48 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./cadastro-peso.component.css']
 })
 
-export class CadastroPesoComponent {
+export class CadastroPesoComponent implements OnInit {
   pesoForm!: FormGroup;
+  suinos: Pig[] = [];
 
-  constructor(private fb: FormBuilder, private PesoService: PesoService) {
+  constructor(
+    private fb: FormBuilder, 
+    private pesoService: PesoService, 
+    private dbService: DatabaseService,
+    private router: Router) {
     this.pesoForm = this.fb.group({
       brincoAnimal: ['', Validators.required],
       dataPesagem: ['', Validators.required],
       peso: ['', [Validators.required, Validators.pattern(/^\d*\.?\d+$/)]]
     });
   }
-  // submitPeso(){
-  //   if (this.pesoForm.valid) {
-  //     this.pesoService.cadastrarPeso(this.pesoForm.value).subscribe(
-  //       (response) => {
-  //         console.log('Peso cadastrado com sucesso!', response);
-  //         // Limpar formulário ou executar outra ação necessária após o cadastro
-  //       },
-  //       (error) => {
-  //         console.error('Erro ao cadastrar peso:', error);
-  //       }
-  //     );
-  //   } else {
-  //     console.log('Formulário inválido');
-  //   }
-  // }
+
+  ngOnInit(): void {
+    this.dbService.getPigs().subscribe(response => {
+      this.suinos = response;
+    });
+  }
+
+  submitPeso(){
+    // if (this.pesoForm.valid) {
+    //   this.pesoService.cadastrarPeso(this.pesoForm.value).subscribe(
+    //     (response) => {
+    //       console.log('Peso cadastrado com sucesso!', response);
+    //       // Limpar formulário ou executar outra ação necessária após o cadastro
+    //     },
+    //     (error) => {
+    //       console.error('Erro ao cadastrar peso:', error);
+    //     }
+    //   );
+    // } else {
+    //   console.log('Formulário inválido');
+    // }
+    if(this.pesoForm.valid) {
+      this.pesoService.cadastrarPeso(this.pesoForm.value).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['']);
+      })
+    }
+  }
 }
 
