@@ -16,6 +16,7 @@ import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.compo
 import { ControlePesoComponent } from './controle-peso/controle-peso.component';
 import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 import { EditarSuinoComponent } from './editar-suino/editar-suino.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { EditarSuinoComponent } from './editar-suino/editar-suino.component';
     ListagemSuinosComponent,
     ControlePesoComponent,
     CadastroPesoComponent,
-    EditarSuinoComponent
+    EditarSuinoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
