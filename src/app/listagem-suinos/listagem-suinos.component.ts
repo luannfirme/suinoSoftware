@@ -24,7 +24,7 @@ export class ListagemSuinosComponent implements OnInit {
 
   excluirSuino(id: string) {
     this.dbService.deletePig(id).subscribe(response => {
-      this.router.navigate(['']);
+      this.router.navigate(['suino-software/home']);
     })
   }
 }

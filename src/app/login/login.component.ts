@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../services/authentication/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,12 @@ export class LoginComponent  implements OnInit {
   isError: boolean = false;
   public registerButtonText: string = 'Não tem uma conta? Registra-se';
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private authService: AuthService
+    ) { }
 
 
   ngOnInit(): void {
@@ -31,8 +37,12 @@ export class LoginComponent  implements OnInit {
   register() {
     this.isLoading = true;
     this.isLogin = false;
-    const { email, password } = this.loginForm.value;
-
+    if (!this.loginForm.valid) {
+      return;
+    }
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+    this.authService.signUp(email, password);
   }
 
   redirectToRegister(): void {
@@ -51,10 +61,7 @@ export class LoginComponent  implements OnInit {
     }
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
-
-    if (this.isLogin) {
-
-    }
+    this.authService.logIn(email, password);
     this.loginForm.reset();
   }
 }

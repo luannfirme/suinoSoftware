@@ -18,6 +18,9 @@ import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 import { EditarSuinoComponent } from './editar-suino/editar-suino.component';
 import { LoginComponent } from './login/login.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -43,7 +46,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     NoopAnimationsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp({"projectId":"feb-p015","appId":"1:526851697276:web:c4ececcb788d48337cf7f9","databaseURL":"https://feb-p015-default-rtdb.firebaseio.com","storageBucket":"feb-p015.appspot.com","apiKey":"AIzaSyDbAsoB7n_PDZZY6Zr0J1npeUb3ktHXw9E","authDomain":"feb-p015.firebaseapp.com","messagingSenderId":"526851697276","measurementId":"G-JWM3GN0BVH"})),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    AngularFireModule.initializeApp({"projectId":"feb-p015","appId":"1:526851697276:web:c4ececcb788d48337cf7f9","databaseURL":"https://feb-p015-default-rtdb.firebaseio.com","storageBucket":"feb-p015.appspot.com","apiKey":"AIzaSyDbAsoB7n_PDZZY6Zr0J1npeUb3ktHXw9E","authDomain":"feb-p015.firebaseapp.com","messagingSenderId":"526851697276","measurementId":"G-JWM3GN0BVH"})
   ],
   providers: [
     provideAnimationsAsync()

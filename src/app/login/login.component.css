@@ -1,8 +1,8 @@
 .container {
   display: flex;
-  height: 50%;
   justify-content: center;
   align-items: center;
+  
 }
 
 .conteudo-login {
@@ -14,6 +14,7 @@
 .card-login {
   width: 500px;
   padding: 20px;
+  background-color: #f6f6f6;
 }
 
 .form-field-full {
