@@ -16,8 +16,8 @@ import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.compo
 import { ControlePesoComponent } from './controle-peso/controle-peso.component';
 import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 import { EditarSuinoComponent } from './editar-suino/editar-suino.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAuth, provideAuth } from '@angular/fire/auth';
+import { LoginComponent } from './login/login.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -29,7 +29,9 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
     ListagemSuinosComponent,
     ControlePesoComponent,
     CadastroPesoComponent,
-    EditarSuinoComponent
+    EditarSuinoComponent,
+    LoginComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
