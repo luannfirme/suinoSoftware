@@ -5,3 +5,31 @@
     <p>Nenhum dado de peso disponível.</p>
   </div>
    -->
+<form [formGroup]="formPeso" (ngSubmit)="submitBrinco()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Controle de Peso</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Brinco do animal</mat-label>
+        <mat-select id="brincoAnimal" formControlName="BrincoAnimal">
+          @for(suino of suinos; track suino) {
+            <mat-option [value]="suino.brincoAnimal">{{suino.brincoAnimal}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="submit">CONSULTAR</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<mat-card *ngIf="pesosAnimal.length">
+  <mat-tab-group>
+    <mat-tab label="Gráfico"></mat-tab>
+    <mat-tab label="Tabela"></mat-tab>
+  </mat-tab-group>
+</mat-card>
