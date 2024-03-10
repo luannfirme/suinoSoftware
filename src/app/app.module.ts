@@ -41,7 +41,9 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     MaterialModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp({"projectId":"feb-p015","appId":"1:526851697276:web:c4ececcb788d48337cf7f9","databaseURL":"https://feb-p015-default-rtdb.firebaseio.com","storageBucket":"feb-p015.appspot.com","apiKey":"AIzaSyDbAsoB7n_PDZZY6Zr0J1npeUb3ktHXw9E","authDomain":"feb-p015.firebaseapp.com","messagingSenderId":"526851697276","measurementId":"G-JWM3GN0BVH"})),
+    provideAuth(() => getAuth())
   ],
   providers: [
     provideAnimationsAsync()

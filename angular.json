@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "suinoSoftware": {
+    "suinosoftware": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "suinoSoftware:build:production"
+              "buildTarget": "suinosoftware:build:production"
             },
             "development": {
-              "buildTarget": "suinoSoftware:build:development"
+              "buildTarget": "suinosoftware:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "suinoSoftware:build"
+            "buildTarget": "suinosoftware:build"
           }
         },
         "test": {

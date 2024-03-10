@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Pig } from '../models/pig.model';
+import { DatabaseService } from '../services/database/database.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PigWeight } from '../models/pigWeight.model';
+import { PesoService } from '../peso.service';
 // import { Chart } from 'chart.js';
 
 @Component({
@@ -8,10 +13,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControlePesoComponent implements OnInit {
   chart: any;
+  suinos: Pig[] = [];
+  formPeso!: FormGroup;
+  pesosAnimal: PigWeight[] = [];
 
-  constructor() { }
+  constructor(private dbService: DatabaseService, private pesoService: PesoService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.formPeso = this.formBuilder.group({
+      BrincoAnimal: ['', Validators.required]
+    })
+
+    this.dbService.getPigs().subscribe(response => {
+      this.suinos = response;
+    });
+  }
+
+  submitBrinco() {
+    console.log('Submit chamado')
+    if(this.formPeso.valid) {
+      console.log('Form valido')
+      this.pesoService.getPesosByBrincoAnimal(this.formPeso.get('BrincoAnimal')?.value).subscribe(response => {
+        this.pesosAnimal = response;
+        console.log(response);
+      });
+    }
+  }
+
   //   this.chart = new Chart('canvas', {
   //     type: 'line',
   //     data: {
@@ -47,6 +75,6 @@ export class ControlePesoComponent implements OnInit {
   //       }
   //     }
   //   });
-  }
+  // }
 }
 
