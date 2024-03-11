@@ -18,12 +18,12 @@ export class ListagemSuinosComponent implements OnInit {
   ngOnInit(): void {
     this.dbService.getPigs().subscribe(pigsList => {
       this.listaSuinos = pigsList;
-      console.log(this.listaSuinos);
     })
   }
 
   excluirSuino(id: string) {
     this.dbService.deletePig(id).subscribe(response => {
+      alert('Exclusão finalizada!');
       this.router.navigate(['suino-software/home']);
     })
   }

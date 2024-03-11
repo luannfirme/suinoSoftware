@@ -37,6 +37,7 @@ export class EditarSuinoComponent implements OnInit {
       this.dbService.putPig(this.suinoId, this.suinoForm.value).subscribe(response => {
         if(response.status == 200) {
           setTimeout(() => {
+            alert('As alterações foram salvas!');
             this.router.navigate(['/suino-software/listar-suinos']);
           })
         }
