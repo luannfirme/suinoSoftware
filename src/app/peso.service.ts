@@ -25,7 +25,7 @@ export class PesoService {
             array.push({...(responseData as any)[key], id: key});
           }
         }
-        console.log(array);
+        // console.log(array);
         return array;
       })
     )

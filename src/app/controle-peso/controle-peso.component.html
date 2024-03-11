@@ -29,7 +29,33 @@
 
 <mat-card *ngIf="pesosAnimal.length">
   <mat-tab-group>
-    <mat-tab label="Gráfico"></mat-tab>
-    <mat-tab label="Tabela"></mat-tab>
+    <mat-tab label="Gráfico">
+      <canvas id="grafico">{{ chart }}</canvas>
+    </mat-tab>
+    <mat-tab label="Tabela">
+      <table mat-table [dataSource]="pesosAnimal" class="mat-elevation-z8">
+      <ng-container matColumnDef="brincoAnimal">
+        <th mat-header-cell *matHeaderCellDef>Brinco</th>
+        <td mat-cell *matCellDef="let pesoSuino">{{ pesoSuino.brincoAnimal }}</td>
+      </ng-container>
+      <ng-container matColumnDef="dataPesagem">
+        <th mat-header-cell *matHeaderCellDef>Data da Pesagem</th>
+        <td mat-cell *matCellDef="let pesoSuino">{{ pesoSuino.dataPesagem | date:'dd/MM/yyyy' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="peso">
+        <th mat-header-cell *matHeaderCellDef>Peso</th>
+        <td mat-cell *matCellDef="let pesoSuino">{{ pesoSuino.peso }}</td>
+      </ng-container>
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ação</th>
+        <td mat-cell *matCellDef="let pesoSuino">
+          <button mat-icon-button color="primary" [routerLink]="['/suino-software/editar-peso', pesoSuino.id]"><mat-icon>edit</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    </mat-tab>
   </mat-tab-group>
 </mat-card>

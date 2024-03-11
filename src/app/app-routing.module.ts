@@ -7,6 +7,8 @@ import { EditarSuinoComponent } from './editar-suino/editar-suino.component';
 import {LoginComponent} from './login/login.component'
 import { AuthGuard } from './services/guards/auth.guard';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
+import { ControlePesoComponent } from './controle-peso/controle-peso.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
@@ -15,7 +17,9 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'listar-suinos', component: ListagemSuinosComponent},
     { path: 'cadastrar-suino', component: CadastroSuinoComponent},
-    { path: 'editar-suino/:id', component: EditarSuinoComponent}
+    { path: 'editar-suino/:id', component: EditarSuinoComponent},
+    {path: 'cadastrar-pesos', component: CadastroPesoComponent},
+    {path: 'consultar-pesos', component: ControlePesoComponent}
   ]},
   {path:'login',component:LoginComponent},
 ];
