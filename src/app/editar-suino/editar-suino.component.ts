@@ -33,13 +33,17 @@ export class EditarSuinoComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dbService.putPig(this.suinoId, this.suinoForm.value).subscribe(response => {
-      if(response.status == 200) {
-        setTimeout(() => {
-          this.router.navigate(['listarSuinos']);
-        })
-      }
-    })
+    if (this.suinoForm.valid) {
+      this.dbService.putPig(this.suinoId, this.suinoForm.value).subscribe(response => {
+        if(response.status == 200) {
+          setTimeout(() => {
+            this.router.navigate(['/suino-software/listar-suinos']);
+          })
+        }
+      })
+    } else {
+      return;
+    }
   }
 
 }

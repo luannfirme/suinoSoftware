@@ -24,8 +24,13 @@ export class CadastroSuinoComponent implements OnInit {
   }
   
   onSubmit(){
-    console.log(this.suinoForm.value);
-    this.dbService.postPig(this.suinoForm.value);
+    if (this.suinoForm.valid) {
+      this.dbService.postPig(this.suinoForm.value);
+      this.suinoForm.reset();
+    } else {
+     return;
+    }
+
   }
 
   ngOnInit(){

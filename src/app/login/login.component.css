@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.conteudo-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-login {
+  width: 500px;
+  padding: 20px;
+  background-color: #f6f6f6;
+}
+
+.form-field-full {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.align-right {
+  margin-left: auto;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 160px;
+  height: 160px;
+  margin-top: 30px;
+
+}
+
+mat-card-title {
+  margin-left: 1rem;
+}
