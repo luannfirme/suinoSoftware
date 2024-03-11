@@ -21,6 +21,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
+import { EditarPesoComponent } from './editar-peso/editar-peso.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     CadastroPesoComponent,
     EditarSuinoComponent,
     LoginComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    EditarPesoComponent
   ],
   imports: [
     BrowserModule,

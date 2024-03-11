@@ -36,12 +36,24 @@ export class PesoService {
     return this.getPesos().pipe(map(pesos => pesos.filter(peso => peso.brincoAnimal == brincoAnimal)));
   }
 
+  getPesoById(pesoId: string) {
+    return this.http.get<PigWeight>(`${this.API_URL}/pesos/${pesoId}.json`)
+  }
+
   cadastrarPeso(pesoData: {
     brincoSuino: string,
     dataPesagem: Date,
     peso: string,
   } ) {
     return this.http.post(`${this.API_URL}/pesos.json`, pesoData);
+  }
+
+  editarPeso(pesoId: string, pesoData: {
+    brincoAnimal: string;
+    dataPesagem: Date;
+    peso: string;
+  }) {
+    return this.http.put(`${this.API_URL}/pesos/${pesoId}.json`, pesoData, { observe: 'response' });
   }
 }
 
