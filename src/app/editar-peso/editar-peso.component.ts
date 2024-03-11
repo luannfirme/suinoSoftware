@@ -36,6 +36,7 @@ export class EditarPesoComponent implements OnInit {
       this.pesoService.editarPeso(this.pesoId, this.pesoForm.value).subscribe(response => {
         if(response.status == 200) {
           setTimeout(() => {
+            alert('As alterações foram salvas!');
             this.router.navigate(['/suino-software/consultar-pesos']);
           })
         }

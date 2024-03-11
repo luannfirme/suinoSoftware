@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pig } from '../models/pig.model';
 import { DatabaseService } from '../services/database/database.service';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
  // Importe o serviço de animais
 
 @Component({
@@ -20,7 +22,8 @@ export class CadastroPesoComponent implements OnInit {
     private fb: FormBuilder, 
     private pesoService: PesoService, 
     private dbService: DatabaseService,
-    private router: Router) {
+    private router: Router,
+    public dialog: MatDialog) {
     this.pesoForm = this.fb.group({
       brincoAnimal: ['', Validators.required],
       dataPesagem: ['', Validators.required],
@@ -35,25 +38,22 @@ export class CadastroPesoComponent implements OnInit {
   }
 
   submitPeso(){
-    // if (this.pesoForm.valid) {
-    //   this.pesoService.cadastrarPeso(this.pesoForm.value).subscribe(
-    //     (response) => {
-    //       console.log('Peso cadastrado com sucesso!', response);
-    //       // Limpar formulário ou executar outra ação necessária após o cadastro
-    //     },
-    //     (error) => {
-    //       console.error('Erro ao cadastrar peso:', error);
-    //     }
-    //   );
-    // } else {
-    //   console.log('Formulário inválido');
-    // }
     if(this.pesoForm.valid) {
       this.pesoService.cadastrarPeso(this.pesoForm.value).subscribe(response => {
-        console.log(response);
-        this.router.navigate(['']);
+        this.pesoForm.reset();
+        this.dialog.open(DialogCadastroPeso);
+        this.router.navigate(['/suino-software/home']);
       })
     }
   }
 }
 
+@Component({
+  selector: 'cadastro-peso.component-dialog',
+  templateUrl: 'cadastro-peso.component-dialog.html',
+  standalone: true,
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+})
+export class DialogCadastroPeso {
+  constructor(public dialogRef: MatDialogRef<DialogCadastroPeso>) { }
+}

@@ -25,14 +25,12 @@ export class PesoService {
             array.push({...(responseData as any)[key], id: key});
           }
         }
-        // console.log(array);
         return array;
       })
     )
   }
 
   getPesosByBrincoAnimal(brincoAnimal: string) {
-    console.log('chamada ao método getPesosByBrincoAnimal')
     return this.getPesos().pipe(map(pesos => pesos.filter(peso => peso.brincoAnimal == brincoAnimal)));
   }
 

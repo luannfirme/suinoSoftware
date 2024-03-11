@@ -4,8 +4,7 @@ import { DatabaseService } from '../services/database/database.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PigWeight } from '../models/pigWeight.model';
 import { PesoService } from '../peso.service';
-import { Chart } from 'chart.js';
-// import { Chart } from 'chart.js';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-controle-peso',
@@ -17,7 +16,7 @@ export class ControlePesoComponent implements OnInit {
   suinos: Pig[] = [];
   formPeso!: FormGroup;
   pesosAnimal: PigWeight[] = [];
-  @ViewChild("grafico") grafico!: ElementRef;
+  @ViewChild("pesoChart") grafico!: ElementRef;
   displayedColumns: string[] = ['brincoAnimal', 'dataPesagem', 'peso', 'acoes']
 
   constructor(private dbService: DatabaseService, private pesoService: PesoService, private formBuilder: FormBuilder) { }
@@ -33,21 +32,14 @@ export class ControlePesoComponent implements OnInit {
   }
 
   submitBrinco() {
-    console.log('Submit chamado')
-    if(this.formPeso.valid) {
-      console.log('Form valido')
+    if (this.formPeso.valid) {
       this.pesoService.getPesosByBrincoAnimal(this.formPeso.get('BrincoAnimal')?.value).subscribe(response => {
         this.pesosAnimal = response;
-        // this.pesosAnimal = this.ordenaPesos(response);
-        // this.pesosAnimal = response.sort((pesoA, pesoB) => {
-        //   return pesoA.dataPesagem.getTime() - pesoB.dataPesagem.getTime();
-        // })
-        // console.log(response);
-        console.log(this.pesosAnimal)
+        setTimeout(() => {
+          this.renderizaGrafico();
+        });
       });
     }
-
-    this.renderizaGrafico();
   }
 
   ordenaPesos(pesos: PigWeight[]): PigWeight[] {
@@ -57,61 +49,55 @@ export class ControlePesoComponent implements OnInit {
   }
 
   renderizaGrafico() {
-    this.chart = new Chart("grafico", {
-      type: 'bar',
-      data: {
-        labels: this.pesosAnimal.map(peso => peso.dataPesagem),
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
+    if (this.grafico && this.grafico.nativeElement) {
+      const ctx = this.grafico.nativeElement.getContext('2d');
+
+      if (this.chart) {
+        this.chart.destroy();
+      }
+
+      this.pesosAnimal.sort((a, b) => new Date(a.dataPesagem).getTime() - new Date(b.dataPesagem).getTime());
+
+      this.chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: this.pesosAnimal.map(peso => new Date(peso.dataPesagem).toLocaleDateString()),
+          datasets: [
+            {
+              label: 'Peso',
+              data: this.pesosAnimal.map(peso => parseFloat(peso.peso)),
+              borderColor: 'rgba(70,130,180)',
+              backgroundColor: 'rgba(70,130,180, 0.5)',
+              type: 'line',
+              order: 0
+            },
+            {
+            label: '',
+            data: this.pesosAnimal.map(peso => parseFloat(peso.peso)),
+            backgroundColor: 'rgba(255,127,80)',
+            borderColor: 'rgba(255,127,80, 0.5)',
+            borderWidth: 1
+          }
+        ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true, 
+            }
+          },
+          plugins: {
+            legend: {
+              display: false,
+              position: 'bottom'
+            }
           }
         }
-      }
-    });
+      });
+    } else {
+      console.error('Elemento do gráfico não encontrado.');
+    }
   }
-
-  //   this.chart = new Chart('canvas', {
-  //     type: 'line',
-  //     data: {
-  //       labels: ['2022-01-01', '2022-02-01', '2022-03-01'], // datas de pesagem
-  //       datasets: [{
-  //         label: 'Peso do animal',
-  //         data: [100, 110, 105], // pesos correspondentes
-  //         borderColor: '#3cba9f',
-  //         fill: false
-  //       }]
-  //     },
-  //     options: {
-  //       scales: {
-  //         xAxes: [{
-  //           type: 'time',
-  //           time: {
-  //             unit: 'day',
-  //             displayFormats: {
-  //               day: 'YYYY-MM-DD'
-  //             }
-  //           },
-  //           scaleLabel: {
-  //             display: true,
-  //             labelString: 'Data de Pesagem'
-  //           }
-  //         }],
-  //         yAxes: [{
-  //           scaleLabel: {
-  //             display: true,
-  //             labelString: 'Peso (kg)'
-  //           }
-  //         }]
-  //       }
-  //     }
-  //   });
-  // }
 }
 
