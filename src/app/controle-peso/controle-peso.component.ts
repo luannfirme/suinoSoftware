@@ -3,7 +3,6 @@ import { Pig } from '../models/pig.model';
 import { DatabaseService } from '../services/database/database.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PigWeight } from '../models/pigWeight.model';
-import { PesoService } from '../peso.service';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -19,7 +18,7 @@ export class ControlePesoComponent implements OnInit {
   @ViewChild("pesoChart") grafico!: ElementRef;
   displayedColumns: string[] = ['brincoAnimal', 'dataPesagem', 'peso', 'acoes']
 
-  constructor(private dbService: DatabaseService, private pesoService: PesoService, private formBuilder: FormBuilder) { }
+  constructor(private dbService: DatabaseService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.formPeso = this.formBuilder.group({
@@ -33,7 +32,7 @@ export class ControlePesoComponent implements OnInit {
 
   submitBrinco() {
     if (this.formPeso.valid) {
-      this.pesoService.getPesosByBrincoAnimal(this.formPeso.get('BrincoAnimal')?.value).subscribe(response => {
+      this.dbService.getWeightsByPig(this.formPeso.get('BrincoAnimal')?.value).subscribe(response => {
         this.pesosAnimal = response;
         setTimeout(() => {
           this.renderizaGrafico();

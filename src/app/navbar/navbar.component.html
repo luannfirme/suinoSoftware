@@ -32,6 +32,15 @@
                 <button routerLink="consultar-pesos" mat-button><mat-icon>search</mat-icon>Consultar</button>
             </mat-nav-list>
         </mat-expansion-panel>
+        <mat-expansion-panel [class.mat-elevation-z0]="true">
+            <mat-expansion-panel-header>
+                <mat-icon inline="true">monitor_heart</mat-icon>&nbsp; Sessões
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <button routerLink="cadastrar-sessao" mat-button><mat-icon>add</mat-icon> Incluir</button><br>
+                <button routerLink="listar-sessoes" mat-button><mat-icon>list</mat-icon>Listar</button>
+            </mat-nav-list>
+        </mat-expansion-panel>
     </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
