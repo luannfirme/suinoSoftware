@@ -1,1 +1,34 @@
-<p>cadastro-sessao works!</p>
+<form>
+    <mat-card>
+        <mat-card-header>
+            Cadastro de Sessão
+        </mat-card-header>
+    </mat-card>
+    <br>
+    <mat-card-content>
+        <mat-card-content>
+            <div class="form-row">
+                <div class="mr-3">
+                    <mat-form-field>
+                        <mat-label>Data</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-hint>dd/MM/yyyy</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="mr-3">
+                    <mat-form-field>
+                        <mat-label>Brincos</mat-label>
+                        <mat-select multiple>
+                            <div *ngFor="let pig of pigs">
+                                <mat-option [value]="pig">{{pig.brincoAnimal}}</mat-option>
+                            </div>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+        </mat-card-content>
+    </mat-card-content>
+</form>
