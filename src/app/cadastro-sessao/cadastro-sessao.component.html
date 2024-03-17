@@ -1,15 +1,13 @@
 <form>
     <mat-card>
         <mat-card-header>
-            Cadastro de Sessão
+            <mat-card-title>Cadastro de Sessão</mat-card-title>
         </mat-card-header>
-    </mat-card>
-    <br>
-    <mat-card-content>
+        <br>
         <mat-card-content>
             <div class="form-row">
-                <div class="mr-3">
-                    <mat-form-field>
+                <div class="form-group col-md-3">
+                    <mat-form-field class="w-100">
                         <mat-label>Data</mat-label>
                         <input matInput [matDatepicker]="picker">
                         <mat-hint>dd/MM/yyyy</mat-hint>
@@ -17,8 +15,8 @@
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
-                <div class="mr-3">
-                    <mat-form-field>
+                <div class="form-group col-md-4">
+                    <mat-form-field class="w-100">
                         <mat-label>Brincos</mat-label>
                         <mat-select multiple>
                             <div *ngFor="let pig of pigs">
@@ -28,7 +26,14 @@
                     </mat-form-field>
                 </div>
             </div>
-            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label>Descrissão</mat-label>
+                        <textarea type="text" matInput placeholder="Digite uma descrissão" id="descrissao"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
         </mat-card-content>
-    </mat-card-content>
+    </mat-card>
 </form>
