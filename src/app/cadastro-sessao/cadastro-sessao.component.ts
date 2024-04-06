@@ -15,7 +15,6 @@ export class CadastroSessaoComponent implements OnInit {
   formGroup!: FormGroup;
   atividades: Atividade[] = [];
   nomeAtividade: string = '';
-  displayedColumns: string[] =  ['nome'];
 
   constructor(private dbService: DatabaseService, private formBuilder: FormBuilder) { }
 
@@ -42,6 +41,7 @@ export class CadastroSessaoComponent implements OnInit {
       data: this.formGroup.get('dataSessao')?.value,
       suinos: []
     }
+    
     this.atividades = [...this.atividades, atividade];
     this.atividadesDoForm.push(this.formBuilder.group({
       nome: ['', Validators.required]
@@ -57,6 +57,10 @@ export class CadastroSessaoComponent implements OnInit {
 
   get atividadesDoForm() {
     return this.formGroup.get('atividades') as FormArray;
+  }
+
+  get suinosSelecionados(): Pig[] {
+    return this.formGroup.get('brincos')?.value;
   }
 
 }

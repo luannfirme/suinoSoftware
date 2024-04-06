@@ -60,15 +60,37 @@
                 </button>
             </div>
             <div class="row" *ngIf="atividades.length">
-                <table mat-table [dataSource]="atividades" class="mat-elevation-z8">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Atividade</th>
+                            <th *ngFor="let suino of suinosSelecionados">{{ suino.brincoAnimal }}</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let atividade of atividades">
+                            <td>{{ atividade.nome }}</td>
+                            <td *ngFor="let suino of suinosSelecionados"><mat-checkbox></mat-checkbox></td>
+                            <td><button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <table mat-table [dataSource]="atividades" class="mat-elevation-z8">
                     <ng-container matColumnDef="nome">
                         <th mat-header-cell *matHeaderCellDef>Atividade</th>
                         <td mat-cell *matCellDef="let atividade">{{ atividade.nome }}</td>
                     </ng-container>
+                    <ng-container *ngFor="let suino in suinosSelecionados" matColumnDef="{{suino.brincoAnimal}}">
+                        <th mat-header-cell *matHeaderCellDef>{{suino.brincoAnimal}}</th>
+                        <td mat-cell *matCellDef="let suino">
+                            <mat-checkbox></mat-checkbox>
+                        </td>
+                    </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
+                </table> -->
             </div>
         </mat-card-content>
         <mat-card-actions>
