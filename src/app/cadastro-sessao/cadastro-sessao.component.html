@@ -79,10 +79,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button type="submit" [disabled]="formGroup.get('dataSessao')?.errors 
-            || formGroup.get('brincos')?.errors 
-            || formGroup.get('descricao')?.errors
-            || atividades.length == 0" >SALVAR</button>
+            <button mat-button type="submit" [disabled]="isFormInvalid" >SALVAR</button>
             <button mat-button routerLink="/suino-software/home">VOLTAR</button>
         </mat-card-actions>
     </mat-card>

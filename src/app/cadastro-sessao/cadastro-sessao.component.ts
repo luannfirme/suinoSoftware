@@ -59,8 +59,11 @@ export class CadastroSessaoComponent implements OnInit {
     }
   }
 
-  get isFormValid() {
-    return this.formGroup.valid && this.atividades.length > 0;
+  get isFormInvalid() {
+    return this.formGroup.get('dataSessao')?.errors 
+    || this.formGroup.get('brincos')?.errors 
+    || this.formGroup.get('descricao')?.errors
+    || this.atividades.length == 0;
   }
 
   get atividadesDoForm() {
