@@ -77,9 +77,10 @@ export class CadastroSessaoComponent implements OnInit {
       atividades: this.atividades
     };
 
-    this.dbService.postSessions(sessao);
+    if(this.isFormInvalid) {
+      this.dbService.postSessions(sessao);
+    }
 
-    // console.log(sessao);
   }
 
   get isFormInvalid() {
