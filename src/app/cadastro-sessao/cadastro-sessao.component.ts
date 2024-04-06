@@ -51,6 +51,14 @@ export class CadastroSessaoComponent implements OnInit {
     this.formGroup.get('brincos')?.disable();
   }
 
+  removerAtividade(atividade: Atividade): void {
+    this.atividades.splice(this.atividades.indexOf(atividade), 1);
+    
+    if(!this.atividades.length) {
+      this.formGroup.get('brincos')?.enable();
+    }
+  }
+
   get isFormValid() {
     return this.formGroup.valid && this.atividades.length > 0;
   }
