@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup">
+<form [formGroup]="formGroup" (ngSubmit)="submitSessao()">
     <mat-card>
         <mat-card-header>
             <mat-card-title>Cadastro de Sessão</mat-card-title>
@@ -71,7 +71,9 @@
                     <tbody>
                         <tr *ngFor="let atividade of atividades">
                             <td>{{ atividade.nome }}</td>
-                            <td *ngFor="let suino of suinosSelecionados"><mat-checkbox color="primary"></mat-checkbox></td>
+                            <td *ngFor="let suino of suinosSelecionados">
+                                <mat-checkbox color="primary" (change)="onSuinoSelected($event, suino, atividade)"></mat-checkbox>
+                            </td>
                             <td><button mat-icon-button color="warn" (click)="removerAtividade(atividade)"><mat-icon>delete</mat-icon></button></td>
                         </tr>
                     </tbody>

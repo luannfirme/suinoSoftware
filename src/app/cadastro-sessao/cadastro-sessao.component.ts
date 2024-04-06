@@ -1,3 +1,4 @@
+import { Sessao } from './../models/sessao.model';
 import { Atividade } from './../models/atividade.model';
 import { Component, OnInit } from '@angular/core';
 import { Pig } from '../models/pig.model';
@@ -23,8 +24,8 @@ export class CadastroSessaoComponent implements OnInit {
 
     this.formGroup = this.formBuilder.group({
       dataSessao: ['', Validators.required],
-      brincos:   ['', Validators.required],
       descricao: ['', Validators.required],
+      brincos:   ['', Validators.required],
       atividades: this.formBuilder.array([], Validators.required)
     })
   }
@@ -57,6 +58,28 @@ export class CadastroSessaoComponent implements OnInit {
     if(!this.atividades.length) {
       this.formGroup.get('brincos')?.enable();
     }
+  }
+
+  onSuinoSelected(event: any, suino: Pig, atividade: Atividade) {
+    if(event.checked) {
+      atividade.suinos.push(suino);
+    } else {
+      const index = atividade.suinos.indexOf(suino);
+      atividade.suinos.splice(index, 1);
+    }
+  }
+
+  submitSessao() {
+    const sessao: Sessao = {
+      data: this.formGroup.get('dataSessao')?.value,
+      descricao: this.formGroup.get('descricao')?.value,
+      brincos: this.formGroup.get('brincos')?.value,
+      atividades: this.atividades
+    };
+
+    this.dbService.postSessions(sessao);
+
+    // console.log(sessao);
   }
 
   get isFormInvalid() {
