@@ -71,7 +71,7 @@
                     <tbody>
                         <tr *ngFor="let atividade of atividades">
                             <td>{{ atividade.nome }}</td>
-                            <td *ngFor="let suino of suinosSelecionados"><mat-checkbox></mat-checkbox></td>
+                            <td *ngFor="let suino of suinosSelecionados"><mat-checkbox color="primary"></mat-checkbox></td>
                             <td><button mat-icon-button color="warn" (click)="removerAtividade(atividade)"><mat-icon>delete</mat-icon></button></td>
                         </tr>
                     </tbody>
