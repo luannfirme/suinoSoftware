@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { Pig } from '../models/pig.model';
 import { DatabaseService } from '../services/database/database.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-sessao',
@@ -17,7 +20,11 @@ export class CadastroSessaoComponent implements OnInit {
   atividades: Atividade[] = [];
   nomeAtividade: string = '';
 
-  constructor(private dbService: DatabaseService, private formBuilder: FormBuilder) { }
+  constructor(private dbService: DatabaseService, 
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.carregaSuinos();
@@ -79,7 +86,10 @@ export class CadastroSessaoComponent implements OnInit {
 
     if(this.isFormInvalid) {
       this.dbService.postSessions(sessao);
+      this.dialog.open(DialogCadastroSessao);
+      this.router.navigate(['/suino-software/home']);
     }
+
 
   }
 
@@ -98,4 +108,14 @@ export class CadastroSessaoComponent implements OnInit {
     return this.formGroup.get('brincos')?.value;
   }
 
+}
+
+@Component({
+  selector: 'cadastro-sessao.component-dialog',
+  templateUrl: 'cadastro-sessao.component-dialog.html',
+  standalone: true,
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+})
+export class DialogCadastroSessao {
+  constructor(public dialogRef: MatDialogRef<DialogCadastroSessao>) { }
 }
