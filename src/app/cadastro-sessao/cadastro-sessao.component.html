@@ -1,1 +1,88 @@
-<p>cadastro-sessao works!</p>
+<form [formGroup]="formGroup" (ngSubmit)="submitSessao()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Cadastro de Sessão</mat-card-title>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Data</mat-label>
+                        <input matInput [matDatepicker]="picker" readonly formControlName="dataSessao">
+                        <mat-hint>dd/MM/yyyy</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <span *ngIf="formGroup.get('dataSessao')?.errors && formGroup.get('dataSessao')?.touched" class="text-danger">
+                        A data é obrigatória
+                    </span>
+                </div>
+                <div class="form-group col-md-4">
+                    <mat-form-field class="w-100">
+                        <mat-label>Brincos</mat-label>
+                        <mat-select multiple formControlName="brincos">
+                            <div *ngFor="let pig of pigs">
+                                <mat-option [value]="pig">{{pig.brincoAnimal}}</mat-option>
+                            </div>
+                        </mat-select>
+                    </mat-form-field>
+                    <span *ngIf="formGroup.get('brincos')?.errors && formGroup.get('brincos')?.touched" class="text-danger">
+                        Selecione os brincos que vão participar da sessão
+                    </span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label>Descrição</mat-label>
+                        <textarea type="text" matInput placeholder="Digite uma descrição" id="descricao" formControlName="descricao"></textarea>
+                    </mat-form-field>
+                    <span *ngIf="formGroup.get('descricao')?.errors && formGroup.get('descricao')?.touched" class="text-danger">
+                        A descrição é obrigatória
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <h6>Atividades da Sessão</h6>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label>Atividade</mat-label>
+                        <input type="text" placeholder="Nome da atividade" matInput [(ngModel)]="nomeAtividade" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                </div>
+                <button mat-button (click)="adicionarAtividade()" [disabled]="formGroup.get('dataSessao')?.errors 
+                || formGroup.get('brincos')?.errors 
+                || formGroup.get('descricao')?.errors
+                || !nomeAtividade">
+                    Adicionar
+                </button>
+            </div>
+            <div class="row" *ngIf="atividades.length">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Atividade</th>
+                            <th *ngFor="let suino of suinosSelecionados">{{ suino.brincoAnimal }}</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let atividade of atividades">
+                            <td>{{ atividade.nome }}</td>
+                            <td *ngFor="let suino of suinosSelecionados">
+                                <mat-checkbox color="primary" (change)="onSuinoSelected($event, suino, atividade)"></mat-checkbox>
+                            </td>
+                            <td><button mat-icon-button color="warn" (click)="removerAtividade(atividade)"><mat-icon>delete</mat-icon></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button type="submit" [disabled]="isFormInvalid" >SALVAR</button>
+            <button mat-button routerLink="/suino-software/home">VOLTAR</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -108,12 +108,7 @@ export class DatabaseService {
     return this.http.put(`${this.API_URL}/pesos/${pesoId}.json`, pesoData, { observe: 'response' });
   }
 
-  postSessions(sessionData: {
-    data: Date,
-    descricao: string,
-    brincos: string[],
-    atividades: string[]
-  }) {
+  postSessions(sessionData: Sessao) {
     this.http.post(`${this.API_URL}/sessions.json`, sessionData).subscribe(response => {
       console.log(response);
     })
