@@ -84,7 +84,7 @@ export class CadastroSessaoComponent implements OnInit {
       atividades: this.atividades
     };
 
-    if(this.isFormInvalid) {
+    if(!this.isFormInvalid) {
       this.dbService.postSessions(sessao);
       this.dialog.open(DialogCadastroSessao);
       this.router.navigate(['/suino-software/home']);
