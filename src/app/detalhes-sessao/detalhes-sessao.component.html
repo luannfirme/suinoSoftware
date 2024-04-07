@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Detalhes da Sessão
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <h6 matListItemTitle>Descrição: </h6>
+                <p matListItemLine>{{ sessao.descricao }}</p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <h6 matListItemTitle>Data:</h6>
+                <p matListItemLine>{{ sessao.data | date: 'dd/MM/yyyy' }}</p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <h6 matListItemTitle>Atividades:</h6>
+                <p *ngFor="let atividade of sessao.atividades" matListItemLine>{{ atividade.nome }}</p>
+            </mat-list-item>
+            <br>
+            <mat-list-item role="listitem">
+                <h6 matListItemTitle>Suínos submetidos:</h6>
+                <p *ngFor="let suino of sessao.brincos" matListItemLine>{{ suino.brincoAnimal }}</p>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button routerLink="/suino-software/listar-sessoes">VOLTAR</button>
+    </mat-card-actions>
+</mat-card>

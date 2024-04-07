@@ -25,6 +25,7 @@ import { EditarPesoComponent } from './editar-peso/editar-peso.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
 import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
 import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
+import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
     EditarPesoComponent,
     CadastroSessaoComponent,
     ListagemSessoesComponent,
-    EditarSessaoComponent
+    EditarSessaoComponent,
+    DetalhesSessaoComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ import { EditarPesoComponent } from './editar-peso/editar-peso.component';
 import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
 import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
+import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
@@ -27,7 +28,8 @@ const routes: Routes = [
     {path: 'editar-peso/:id', component: EditarPesoComponent},
     { path: 'listar-sessoes', component: ListagemSessoesComponent},
     { path: 'cadastrar-sessao', component: CadastroSessaoComponent},
-    { path: 'editar-sessao/:id', component: EditarSessaoComponent}
+    { path: 'editar-sessao/:id', component: EditarSessaoComponent},
+    { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent }
   ]},
   {path:'login',component:LoginComponent},
 ];
