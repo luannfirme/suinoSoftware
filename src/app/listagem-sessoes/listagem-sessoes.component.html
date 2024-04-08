@@ -1,1 +1,25 @@
-<p>listagem-sessoes works!</p>
+<h2>Lista de Sessões</h2>
+<br>
+<table *ngIf="sessoes.length; else listaVazia" mat-table [dataSource]="sessoes" class="mat-elevation-z8">
+    <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let sessao">{{ sessao.descricao }}</td>
+    </ng-container>
+    <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef>Data</th>
+        <td mat-cell *matCellDef="let sessao">{{ sessao.data | date:'dd/MM/yyyy' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let sessao">
+            <button mat-icon-button color="primary" [routerLink]="['/suino-software/detalhes-sessao', sessao.id]"><mat-icon>info</mat-icon></button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<ng-template #listaVazia>
+    <p>Nenhuma sessão foi cadastrada.</p>
+</ng-template>

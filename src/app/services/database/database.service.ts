@@ -133,7 +133,7 @@ export class DatabaseService {
   }
 
   getSessionsByPig(earingPig: string) {
-    return this.getSession().pipe(map(sessions => sessions.filter(session => session.brincos.includes(earingPig))));
+    return this.getSession().pipe(map(sessions => sessions.filter(session => session.brincos.some(pig => pig.brincoAnimal === earingPig))));
   }  
 
   getSessionById(sessionId: string) {
