@@ -10,6 +10,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 import { ControlePesoComponent } from './controle-peso/controle-peso.component';
 import { EditarPesoComponent } from './editar-peso/editar-peso.component';
+import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
+import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
+import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
+import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
@@ -21,7 +25,11 @@ const routes: Routes = [
     { path: 'editar-suino/:id', component: EditarSuinoComponent},
     {path: 'cadastrar-pesos', component: CadastroPesoComponent},
     {path: 'consultar-pesos', component: ControlePesoComponent},
-    {path: 'editar-peso/:id', component: EditarPesoComponent}
+    {path: 'editar-peso/:id', component: EditarPesoComponent},
+    { path: 'listar-sessoes', component: ListagemSessoesComponent},
+    { path: 'cadastrar-sessao', component: CadastroSessaoComponent},
+    { path: 'editar-sessao/:id', component: EditarSessaoComponent},
+    { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent }
   ]},
   {path:'login',component:LoginComponent},
 ];

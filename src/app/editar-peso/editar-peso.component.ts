@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { PesoService } from './../peso.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatabaseService } from '../services/database/database.service';
 
 @Component({
   selector: 'app-editar-peso',
@@ -13,7 +13,7 @@ export class EditarPesoComponent implements OnInit {
   pesoForm!: FormGroup;
 
   constructor(
-    private pesoService: PesoService, 
+    private dbService: DatabaseService,
     private route: ActivatedRoute, 
     private fb: FormBuilder,
     private router: Router
@@ -26,14 +26,14 @@ export class EditarPesoComponent implements OnInit {
       peso: ['', [Validators.required, Validators.pattern(/^\d*\.?\d+$/)]]
     });
     this.pesoId = this.route.snapshot.paramMap.get('id')!;
-    this.pesoService.getPesoById(this.pesoId).subscribe(response => [
+    this.dbService.getWeightById(this.pesoId).subscribe(response => [
       this.pesoForm.setValue(response)
     ])
   }
 
   submitPeso() {
     if(this.pesoForm.valid) {
-      this.pesoService.editarPeso(this.pesoId, this.pesoForm.value).subscribe(response => {
+      this.dbService.putWeight(this.pesoId, this.pesoForm.value).subscribe(response => {
         if(response.status == 200) {
           setTimeout(() => {
             alert('As alterações foram salvas!');

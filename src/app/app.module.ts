@@ -22,6 +22,10 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { EditarPesoComponent } from './editar-peso/editar-peso.component';
+import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
+import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
+import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
+import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 
 
 @NgModule({
@@ -36,7 +40,11 @@ import { EditarPesoComponent } from './editar-peso/editar-peso.component';
     EditarSuinoComponent,
     LoginComponent,
     LoadingSpinnerComponent,
-    EditarPesoComponent
+    EditarPesoComponent,
+    CadastroSessaoComponent,
+    ListagemSessoesComponent,
+    EditarSessaoComponent,
+    DetalhesSessaoComponent
   ],
   imports: [
     BrowserModule,

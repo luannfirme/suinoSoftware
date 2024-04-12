@@ -1,4 +1,3 @@
-import { PesoService } from './../peso.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pig } from '../models/pig.model';
@@ -6,7 +5,6 @@ import { DatabaseService } from '../services/database/database.service';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
- // Importe o serviço de animais
 
 @Component({
   selector: 'app-cadastro-peso',
@@ -20,7 +18,6 @@ export class CadastroPesoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder, 
-    private pesoService: PesoService, 
     private dbService: DatabaseService,
     private router: Router,
     public dialog: MatDialog) {
@@ -39,7 +36,7 @@ export class CadastroPesoComponent implements OnInit {
 
   submitPeso(){
     if(this.pesoForm.valid) {
-      this.pesoService.cadastrarPeso(this.pesoForm.value).subscribe(response => {
+      this.dbService.postWeight(this.pesoForm.value).subscribe(response => {
         this.pesoForm.reset();
         this.dialog.open(DialogCadastroPeso);
         this.router.navigate(['/suino-software/home']);
