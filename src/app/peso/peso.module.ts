@@ -4,6 +4,7 @@ import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 import { ControlePesoComponent } from './controle-peso/controle-peso.component';
 import { EditarPesoComponent } from './editar-peso/editar-peso.component';
 import { SharedModule } from '../shared/shared.module';
+import { PesoRoutingModule } from './peso-routing.module';
 
 
 
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    PesoRoutingModule,
     SharedModule
   ]
 })

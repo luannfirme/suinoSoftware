@@ -20,16 +20,18 @@ const routes: Routes = [
   { path: 'suino-software', component: NavbarComponent, canActivate: [AuthGuard], children: [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'listar-suinos', component: ListagemSuinosComponent},
-    { path: 'cadastrar-suino', component: CadastroSuinoComponent},
-    { path: 'editar-suino/:id', component: EditarSuinoComponent},
-    {path: 'cadastrar-pesos', component: CadastroPesoComponent},
-    {path: 'consultar-pesos', component: ControlePesoComponent},
-    {path: 'editar-peso/:id', component: EditarPesoComponent},
-    { path: 'listar-sessoes', component: ListagemSessoesComponent},
-    { path: 'cadastrar-sessao', component: CadastroSessaoComponent},
-    { path: 'editar-sessao/:id', component: EditarSessaoComponent},
-    { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent }
+    {
+      path: 'suinos',
+      loadChildren: () => import('./suino/suino.module').then(m => m.SuinoModule)
+    },
+    {
+      path: 'pesos',
+      loadChildren: () => import('./peso/peso.module').then(m => m.PesoModule)
+    },
+    {
+      path: 'sessoes',
+      loadChildren: () => import('./sessao/sessao.module').then(m => m.SessaoModule)
+    }
   ]},
   {path:'login',component:LoginComponent},
 ];

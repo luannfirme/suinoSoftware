@@ -5,6 +5,7 @@ import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.compo
 import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
 import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
 import { SharedModule } from '../shared/shared.module';
+import { SessaoRoutingModule } from './sessao-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    SessaoRoutingModule,
     SharedModule
   ]
 })
