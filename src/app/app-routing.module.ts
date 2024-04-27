@@ -10,10 +10,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CadastroPesoComponent } from './peso/cadastro-peso/cadastro-peso.component';
 import { ControlePesoComponent } from './peso/controle-peso/controle-peso.component';
 import { EditarPesoComponent } from './peso/editar-peso/editar-peso.component';
-import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
-import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
-import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
-import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
+import { ListagemSessoesComponent } from './sessao/listagem-sessoes/listagem-sessoes.component';
+import { CadastroSessaoComponent } from './sessao/cadastro-sessao/cadastro-sessao.component';
+import { EditarSessaoComponent } from './sessao/editar-sessao/editar-sessao.component';
+import { DetalhesSessaoComponent } from './sessao/detalhes-sessao/detalhes-sessao.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},

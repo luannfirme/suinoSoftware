@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../services/database/database.service';
+import { DatabaseService } from '../../services/database/database.service';
 import { ActivatedRoute } from '@angular/router';
-import { Sessao } from '../models/sessao.model';
+import { Sessao } from '../../models/sessao.model';
 
 @Component({
   selector: 'app-detalhes-sessao',

@@ -1,8 +1,8 @@
-import { Sessao } from './../models/sessao.model';
-import { Atividade } from './../models/atividade.model';
+import { Sessao } from '../../models/sessao.model';
+import { Atividade } from '../../models/atividade.model';
 import { Component, OnInit } from '@angular/core';
-import { Pig } from '../models/pig.model';
-import { DatabaseService } from '../services/database/database.service';
+import { Pig } from '../../models/pig.model';
+import { DatabaseService } from '../../services/database/database.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
