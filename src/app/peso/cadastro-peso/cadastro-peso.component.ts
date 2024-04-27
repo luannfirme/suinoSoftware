@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Pig } from '../models/pig.model';
-import { DatabaseService } from '../services/database/database.service';
+import { Pig } from '../../models/pig.model';
+import { DatabaseService } from '../../services/database/database.service';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';

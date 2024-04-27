@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Pig } from '../models/pig.model';
-import { DatabaseService } from '../services/database/database.service';
+import { Pig } from '../../models/pig.model';
+import { DatabaseService } from '../../services/database/database.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PigWeight } from '../models/pigWeight.model';
+import { PigWeight } from '../../models/pigWeight.model';
 import Chart from 'chart.js/auto';
 
 @Component({

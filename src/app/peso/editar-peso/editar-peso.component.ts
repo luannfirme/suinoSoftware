@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DatabaseService } from '../services/database/database.service';
+import { DatabaseService } from '../../services/database/database.service';
 
 @Component({
   selector: 'app-editar-peso',

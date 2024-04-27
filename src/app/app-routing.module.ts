@@ -6,10 +6,10 @@ import { ListagemSuinosComponent } from './suino/listagem-suinos/listagem-suinos
 import { EditarSuinoComponent } from './suino/editar-suino/editar-suino.component';
 import {LoginComponent} from './login/login.component'
 import { AuthGuard } from './services/guards/auth.guard';
-import { NavbarComponent } from './navbar/navbar.component';
-import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
-import { ControlePesoComponent } from './controle-peso/controle-peso.component';
-import { EditarPesoComponent } from './editar-peso/editar-peso.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { CadastroPesoComponent } from './peso/cadastro-peso/cadastro-peso.component';
+import { ControlePesoComponent } from './peso/controle-peso/controle-peso.component';
+import { EditarPesoComponent } from './peso/editar-peso/editar-peso.component';
 import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
 import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';

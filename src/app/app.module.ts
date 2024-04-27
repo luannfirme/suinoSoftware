@@ -7,34 +7,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ControlePesoComponent } from './controle-peso/controle-peso.component';
-import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
 import { LoginComponent } from './login/login.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
-import { EditarPesoComponent } from './editar-peso/editar-peso.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
 import { ListagemSessoesComponent } from './listagem-sessoes/listagem-sessoes.component';
 import { EditarSessaoComponent } from './editar-sessao/editar-sessao.component';
 import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 import { SuinoModule } from './suino/suino.module';
+import { PesoModule } from './peso/peso.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
-    ControlePesoComponent,
-    CadastroPesoComponent,
     LoginComponent,
     LoadingSpinnerComponent,
-    EditarPesoComponent,
     CadastroSessaoComponent,
     ListagemSessoesComponent,
     EditarSessaoComponent,
@@ -49,6 +42,7 @@ import { SuinoModule } from './suino/suino.module';
     NoopAnimationsModule,
     HttpClientModule,
     SuinoModule,
+    PesoModule,
     provideFirebaseApp(() => initializeApp({"projectId":"feb-p015","appId":"1:526851697276:web:c4ececcb788d48337cf7f9","databaseURL":"https://feb-p015-default-rtdb.firebaseio.com","storageBucket":"feb-p015.appspot.com","apiKey":"AIzaSyDbAsoB7n_PDZZY6Zr0J1npeUb3ktHXw9E","authDomain":"feb-p015.firebaseapp.com","messagingSenderId":"526851697276","measurementId":"G-JWM3GN0BVH"})),
     provideAuth(() => getAuth()),
     AngularFireModule.initializeApp({"projectId":"feb-p015","appId":"1:526851697276:web:c4ececcb788d48337cf7f9","databaseURL":"https://feb-p015-default-rtdb.firebaseio.com","storageBucket":"feb-p015.appspot.com","apiKey":"AIzaSyDbAsoB7n_PDZZY6Zr0J1npeUb3ktHXw9E","authDomain":"feb-p015.firebaseapp.com","messagingSenderId":"526851697276","measurementId":"G-JWM3GN0BVH"})
