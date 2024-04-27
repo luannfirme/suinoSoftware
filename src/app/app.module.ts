@@ -7,7 +7,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -31,7 +30,6 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     AppRoutingModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    HttpClientModule,
     SuinoModule,
     PesoModule,
     SessaoModule,
