@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../services/database/database.service';
-import { Pig } from '../models/pig.model';
+import { DatabaseService } from '../../services/database/database.service';
+import { Pig } from '../../models/pig.model';
 import { Router } from '@angular/router';
 
 @Component({
