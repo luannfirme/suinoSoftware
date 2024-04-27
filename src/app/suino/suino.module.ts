@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CadastroSuinoComponent } from './cadastro-suino/cadastro-suino.component';
 import { EditarSuinoComponent } from './editar-suino/editar-suino.component';
 import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../../material-module';
 import { SuinoRoutingModule } from './suino-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +15,7 @@ import { SuinoRoutingModule } from './suino-routing.module';
   imports: [
     CommonModule,
     SuinoRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
+    SharedModule
   ]
 })
 export class SuinoModule { }

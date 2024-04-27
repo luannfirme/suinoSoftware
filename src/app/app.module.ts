@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MaterialModule } from '../material-module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -46,7 +45,6 @@ import { SuinoModule } from './suino/suino.module';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     HttpClientModule,
