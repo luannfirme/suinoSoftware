@@ -8,8 +8,4 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'suinoSoftware';
-
-  /* constructor(private router: Router) {
-    this.router.navigate(['/login']);
-  } */
 }

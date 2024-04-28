@@ -21,6 +21,10 @@ const routes: Routes = [
     {
       path: 'sessoes',
       loadChildren: () => import('./sessao/sessao.module').then(m => m.SessaoModule)
+    },
+    {
+      path: 'historico',
+      loadChildren: () => import('./historico/historico.module').then(m => m.HistoricoModule)
     }
   ]},
   {path:'login',component:LoginComponent},
